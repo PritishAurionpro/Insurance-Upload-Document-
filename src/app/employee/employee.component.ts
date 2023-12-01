@@ -18,6 +18,18 @@ export class EmployeeComponent {
   navigateTo(route: string): void {
     this.router.navigate([`/employee/${route}`]);
   }
+  ngOnInit(): void{
+    var token = localStorage.getItem('token')
+    var role = localStorage.getItem('role')
+    if (token==null){
+      alert('Please login')
+      this.router.navigateByUrl('/login')
+    }
+    else if(role!= 'Employee'){
+      alert('Please Login as Employee')
+      this.router.navigateByUrl('/login')
+    }
+  }
 }
 
   

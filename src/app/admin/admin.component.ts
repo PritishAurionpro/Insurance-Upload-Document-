@@ -17,7 +17,18 @@ export class AdminComponent {
     this.router.navigate([`/admin/${route}`]);
   }
 
-  
+  ngOnInit(): void{
+    var token = localStorage.getItem('token')
+    var role = localStorage.getItem('role')
+    if (token==null){
+      alert('Please login')
+      this.router.navigateByUrl('/login')
+    }
+    else if(role!= 'Admin'){
+      alert('Please Login as Admin')
+      this.router.navigateByUrl('/login')
+    }
+  }
   /*
   navigateTo(option: string) {
     switch (option) {
